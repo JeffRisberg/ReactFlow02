@@ -30,12 +30,6 @@ export const moduleTree: ModuleNode = {
           description: "JWT session management",
           type: "service",
         },
-        {
-          id: "auth-guards",
-          label: "RouteGuards",
-          description: "Protected route helpers",
-          type: "util",
-        },
       ],
     },
     {
@@ -54,32 +48,6 @@ export const moduleTree: ModuleNode = {
           id: "dashboard-charts",
           label: "ChartWidgets",
           description: "Chart components",
-          type: "component",
-          children: [
-            {
-              id: "chart-line",
-              label: "LineChart",
-              description: "Time-series line chart",
-              type: "component",
-            },
-            {
-              id: "chart-bar",
-              label: "BarChart",
-              description: "Comparative bar chart",
-              type: "component",
-            },
-            {
-              id: "chart-pie",
-              label: "PieChart",
-              description: "Distribution pie chart",
-              type: "component",
-            },
-          ],
-        },
-        {
-          id: "dashboard-alerts",
-          label: "AlertFeed",
-          description: "Real-time alert feed",
           type: "component",
         },
       ],
@@ -102,12 +70,6 @@ export const moduleTree: ModuleNode = {
           description: "User CRUD endpoints",
           type: "service",
         },
-        {
-          id: "api-data",
-          label: "DataAPI",
-          description: "Analytics data endpoints",
-          type: "service",
-        },
       ],
     },
     {
@@ -121,37 +83,11 @@ export const moduleTree: ModuleNode = {
           label: "UIKit",
           description: "Base UI components",
           type: "component",
-          children: [
-            {
-              id: "ui-button",
-              label: "Button",
-              description: "Button variants",
-              type: "component",
-            },
-            {
-              id: "ui-modal",
-              label: "Modal",
-              description: "Dialog/modal wrapper",
-              type: "component",
-            },
-            {
-              id: "ui-table",
-              label: "DataTable",
-              description: "Sortable/filterable table",
-              type: "component",
-            },
-          ],
         },
         {
           id: "shared-hooks",
           label: "Hooks",
           description: "Custom React hooks",
-          type: "util",
-        },
-        {
-          id: "shared-utils",
-          label: "Utils",
-          description: "Pure utility functions",
           type: "util",
         },
       ],
