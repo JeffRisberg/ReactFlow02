@@ -10,45 +10,6 @@ function hexToRgba(hex: string, alpha: number) {
     return `rgba(${r},${g},${b},${alpha})`;
 }
 
-const CAPABILITIES = [
-    {
-        emoji: "🔍",
-        title: "Unified Observability",
-        description:
-            "Ingest metrics, logs, traces, events, and topology into a single AI-driven context layer. Eliminates tool-switching and alert duplication across domains.",
-    },
-    {
-        emoji: "🧠",
-        title: "Causal AI & Root Cause Analysis",
-        description:
-            "Go beyond correlation. Deterministic causal graphs or multi-hypothesis agents pinpoint actual root cause — not just a related symptom — within minutes.",
-    },
-    {
-        emoji: "⚡",
-        title: "Autonomous Remediation",
-        description:
-            "Agents execute approved runbooks, restart services, scale resources, or initiate rollbacks — without human approval for known-safe patterns.",
-    },
-    {
-        emoji: "🔮",
-        title: "Predictive Prevention",
-        description:
-            "ML models and change-risk scoring detect anomalies and flag dangerous changes before they cause incidents. Shift from reactive firefighting to proactive prevention.",
-    },
-    {
-        emoji: "🤝",
-        title: "Multi-Agent Orchestration",
-        description:
-            "Specialized agents (network, cloud, security, application, L1) collaborate via an orchestration layer. Always-on background agents handle continuous operational hygiene.",
-    },
-    {
-        emoji: "🛡️",
-        title: "Governance & Guardrails",
-        description:
-            "Policy-based controls define autonomous vs. human-approval thresholds. Full audit trail, explainability, and cost monitoring across all agent actions.",
-    },
-];
-
 const NODE_TYPES = NODE_REGISTRY.map(n => ({
     label: n.label,
     description: n.description,
@@ -79,14 +40,8 @@ export function HomePage() {
                 <div className="flex flex-col gap-6 max-w-8xl">
                     <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                         <span className="w-2 h-2 rounded-full bg-orange-500 inline-block" />
-                        Agentic ITOps Platform
+                        ReactFlow02
                     </div>
-                    <h1 className="text-5xl font-bold leading-tight tracking-tight text-foreground">
-                        Move from reactive firefighting to proactive, agentic ITOps.
-                    </h1>
-                    <p className="text-lg text-muted-foreground leading-relaxed max-w-5xl">
-                        Design the alert chains and automation flows that power your agentic platform — visually, in minutes.
-                    </p>
                     <div className="flex items-center gap-3">
                         <Button asChild size="lg">
                             <Link to="/flow-library">
@@ -98,34 +53,6 @@ export function HomePage() {
             </section>
 
             <div className="max-w-5xl mx-auto px-6 pb-16 flex flex-col gap-20">
-
-                {/* Capability Stack */}
-                <section className="flex flex-col gap-6">
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(3, 1fr)",
-                            gap: 20,
-                        }}
-                        className="sm:grid-cols-1"
-                    >
-                        {CAPABILITIES.map(({ emoji, title, description }) => (
-                            <div
-                                key={title}
-                                style={capCardStyle}
-                                onMouseEnter={e => ((e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 18px rgba(139,92,246,0.2)")}
-                                onMouseLeave={e => ((e.currentTarget as HTMLDivElement).style.boxShadow = "none")}
-                            >
-                                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-                                    <span style={{ fontSize: 30, lineHeight: 1, flexShrink: 0 }}>{emoji}</span>
-                                    <strong style={{ fontSize: 15, fontWeight: 700, color: "#111827", lineHeight: 1.3 }}>{title}</strong>
-                                </div>
-                                <p style={{ fontSize: 14, lineHeight: 1.7, color: "#4b5563", margin: 0 }}>{description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
                 {/* Node Types */}
                 <section className="flex flex-col gap-6">
                     <div>

@@ -2,9 +2,7 @@ import {
     addEdge,
     Background,
     Controls,
-    Handle,
     MiniMap,
-    Position,
     ReactFlow,
     ReactFlowProvider,
     useEdgesState,
@@ -12,17 +10,17 @@ import {
     type Connection,
     type Edge,
     type Node,
-    type NodeProps,
-    type NodeTypes,
     type ReactFlowInstance,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { Download, LayoutPanelLeft, RotateCcw } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router";
-import type { FlowDefinition, FlowNodeData } from "@/data/flowDefinitions";
+import { downloadJson } from "@/lib/utils";
+import { INITIAL_EDGES, INITIAL_NODES, type FlowDefinition, type FlowNodeData } from "@/data/flowDefinitions";
 import { NODE_REGISTRY, NODE_REGISTRY_MAP } from "@/nodes";
 import type { NodeProperty } from "@/nodes";
+import { nodeTypes } from "@/nodes/nodeTypes";
 
 
 
@@ -57,6 +55,43 @@ const fieldStyle: React.CSSProperties = {
     boxSizing: "border-box",
 };
 
+function PropField({
+    prop,
+    value,
+    onChange,
+}: {
+    prop: NodeProperty;
+    value: string | number;
+    onChange: (key: string, value: string | number) => void;
+}) {
+    return (
+        <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <span style={{ fontSize: 12, fontWeight: 500 }}>{prop.label}</span>
+            {prop.type === "select" ? (
+                <select
+                    value={value}
+                    onChange={(e) => onChange(prop.key, e.target.value)}
+                    style={fieldStyle}
+                >
+                    {prop.options?.map((opt) => (
+                        <option key={opt} value={opt}>
+                            {opt}
+                        </option>
+                    ))}
+                </select>
+            ) : (
+                <input
+                    type={prop.type === "number" ? "number" : "text"}
+                    value={value}
+                    onChange={(e) =>
+                        onChange(prop.key, prop.type === "number" ? Number(e.target.value) : e.target.value)
+                    }
+                    style={fieldStyle}
+                />
+            )}
+        </label>
+    );
+}
 
 interface FlowCanvasProps {
     initialNodes?: FlowNode[];
@@ -177,7 +212,7 @@ function FlowCanvas({ initialNodes = INITIAL_NODES, initialEdges = INITIAL_EDGES
                 <p style={{ fontSize: 12, color: "hsl(var(--muted-foreground))", margin: "0 0 8px" }}>
                     Drag onto the canvas to add a node.
                 </p>
-                {PALETTE.map(({ type, label, description, Icon, accent }) => (
+                {NODE_REGISTRY.map(({ type, label, description, Icon, accent }) => (
                     <button
                         key={type}
                         draggable

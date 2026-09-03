@@ -1,7 +1,30 @@
-import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+
+const Slot = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  ({ children, ...props }, ref) => {
+    if (!React.isValidElement(children)) {
+      return null;
+    }
+    const child = children as React.ReactElement<any>;
+    return React.cloneElement(child, {
+      ...props,
+      ...child.props,
+      className: cn(props.className, child.props.className),
+      ref: ref
+        ? (node: HTMLElement) => {
+            if (typeof ref === "function") ref(node);
+            else if (ref) (ref as React.RefObject<HTMLElement | null>).current = node;
+            const childRef = (child as any).ref;
+            if (typeof childRef === "function") childRef(node);
+            else if (childRef) childRef.current = node;
+          }
+        : (child as any).ref,
+    });
+  }
+);
+Slot.displayName = "Slot";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
