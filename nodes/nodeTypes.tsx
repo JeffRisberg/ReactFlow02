@@ -23,14 +23,14 @@ function FlowNodeView({ data, type }: NodeProps) {
         minWidth: 140,
       }}
     >
-      <Handle type="target" position={Position.Top} style={{ background: accent }} />
+      <Handle type="target" position={Position.Left} style={{ background: accent }} />
       {Icon && (
         <span style={{ color: accent, flexShrink: 0 }}>
           <Icon size={15} />
         </span>
       )}
       <span style={{ fontWeight: 600 }}>{label}</span>
-      <Handle type="source" position={Position.Bottom} style={{ background: accent }} />
+      <Handle type="source" position={Position.Right} style={{ background: accent }} />
     </div>
   );
 }

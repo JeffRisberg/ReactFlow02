@@ -26,13 +26,13 @@ export const INITIAL_NODES: FlowNode[] = [
   {
     id: "n2",
     type: "condition",
-    position: { x: 0, y: 140 },
+    position: { x: 220, y: 0 },
     data: { label: "Condition", props: NODE_REGISTRY_MAP.condition.getDefaultProps() },
   },
   {
     id: "n3",
     type: "notification",
-    position: { x: 0, y: 280 },
+    position: { x: 440, y: 0 },
     data: { label: "Notify", props: NODE_REGISTRY_MAP.notification.getDefaultProps() },
   },
 ];

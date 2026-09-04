@@ -38,16 +38,9 @@ export function HomePage() {
             {/* Hero */}
             <section className="w-3/4 mx-auto pt-16 pb-12">
                 <div className="flex flex-col gap-6 max-w-8xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    <div className="inline-flex items-center gap-2 text-lg font-semibold uppercase tracking-widest text-muted-foreground">
                         <span className="w-2 h-2 rounded-full bg-orange-500 inline-block" />
                         ReactFlow02
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <Button asChild size="lg">
-                            <Link to="/flow-library">
-                                Open Library <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
                     </div>
                 </div>
             </section>

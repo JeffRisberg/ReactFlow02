@@ -22,8 +22,6 @@ import { NODE_REGISTRY, NODE_REGISTRY_MAP } from "@/nodes";
 import type { NodeProperty } from "@/nodes";
 import { nodeTypes } from "@/nodes/nodeTypes";
 
-
-
 /* ── data types ── */
 
 type FlowNode = Node<FlowNodeData>;
