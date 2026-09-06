@@ -1,39 +1,24 @@
-import type { Edge, Node } from "@xyflow/react";
-import { NODE_REGISTRY_MAP } from "@/nodes";
-
-export interface FlowNodeData extends Record<string, unknown> {
-  label: string;
-  props?: Record<string, string | number>;
-}
-
-export type FlowNode = Node<FlowNodeData>;
-
-export interface FlowDefinition {
-  id: string;
-  name: string;
-  description?: string;
-  nodes: FlowNode[];
-  edges: Edge[];
-}
+import type { Edge } from "@xyflow/react";
+import type { FlowNode } from "@/types/interfaces";
 
 export const INITIAL_NODES: FlowNode[] = [
   {
     id: "n1",
     type: "trigger",
-    position: { x: 0, y: 0 },
-    data: { label: "Alert Trigger", props: NODE_REGISTRY_MAP.trigger.getDefaultProps() },
+    position: { x: 0, y: 80 },
+    data: { label: "Alert Trigger", props: {} },
   },
   {
     id: "n2",
     type: "condition",
-    position: { x: 220, y: 0 },
-    data: { label: "Condition", props: NODE_REGISTRY_MAP.condition.getDefaultProps() },
+    position: { x: 260, y: 80 },
+    data: { label: "Condition", props: {} },
   },
   {
     id: "n3",
     type: "notification",
-    position: { x: 440, y: 0 },
-    data: { label: "Notify", props: NODE_REGISTRY_MAP.notification.getDefaultProps() },
+    position: { x: 520, y: 80 },
+    data: { label: "Notify", props: {} },
   },
 ];
 

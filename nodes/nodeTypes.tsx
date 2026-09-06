@@ -1,40 +1,54 @@
 import { Handle, Position, type NodeProps, type NodeTypes } from "@xyflow/react";
-import type { FlowNodeData } from "@/data/flowDefinitions";
-import { NODE_REGISTRY, NODE_REGISTRY_MAP } from "./registry";
+import { cn } from "@/lib/utils";
+import { NODE_REGISTRY_MAP } from "./registry";
 
-function FlowNodeView({ data, type }: NodeProps) {
+function FlowNode({ id, type, data, selected }: NodeProps) {
   const def = type ? NODE_REGISTRY_MAP[type] : undefined;
-  const accent = def?.accent ?? "#64748b";
-  const Icon = def?.Icon;
-  const label = String((data as FlowNodeData)?.label ?? def?.label ?? type);
+  if (!def) return null;
+  const label = typeof data?.label === "string" ? data.label : def.label;
+  const Icon = def.Icon;
 
   return (
     <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        padding: "8px 12px",
-        borderRadius: 8,
-        border: `1.5px solid ${accent}`,
-        background: `${accent}1a`,
-        color: "#f1f5f9",
-        fontSize: 13,
-        minWidth: 140,
-      }}
-    >
-      <Handle type="target" position={Position.Left} style={{ background: accent }} />
-      {Icon && (
-        <span style={{ color: accent, flexShrink: 0 }}>
-          <Icon size={15} />
-        </span>
+      className={cn(
+        "min-w-[170px] rounded-lg border-1.5 bg-card px-3 py-2.5 shadow-sm transition-shadow",
+        selected && "ring-2 ring-offset-1"
       )}
-      <span style={{ fontWeight: 600 }}>{label}</span>
-      <Handle type="source" position={Position.Right} style={{ background: accent }} />
+      style={{
+        borderColor: `${def.background}80`,
+        boxShadow: selected ? `0 0 0 2px ${def.background}55` : undefined,
+      }}
+      data-node-id={id}
+    >
+      <div className="flex items-center gap-2">
+        <span
+          className="flex size-6 shrink-0 items-center justify-center rounded-md"
+          style={{ background: `${def.background}22`, color: def.background }}
+        >
+          <Icon size={14} />
+        </span>
+        <div className="min-w-0">
+          <div className="truncate text-xs font-semibold text-foreground">{label}</div>
+        </div>
+      </div>
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: def.background, width: 8, height: 8 }}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        style={{ background: def.background, width: 8, height: 8 }}
+      />
     </div>
   );
 }
 
-export const nodeTypes: NodeTypes = Object.fromEntries(
-  NODE_REGISTRY.map((def) => [def.type, FlowNodeView])
-);
+export const nodeTypes: NodeTypes = {
+  trigger: FlowNode,
+  condition: FlowNode,
+  enrichment: FlowNode,
+  agent: FlowNode,
+  notification: FlowNode,
+};
