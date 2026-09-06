@@ -20,19 +20,20 @@ There is no test script configured yet.
 
 ## Folder structure
 
-- `app/` — Next.js App Router pages
-  - `app/page.tsx` — home page
-  - `app/flow-editor/page.tsx` — flow editor page
-  - `app/layout.tsx`, `app/globals.css` — root layout and global styles
-- `components/` — shared React components
-  - `components/TopBar.tsx` — top navigation bar
-  - `components/flow/FlowCanvas.tsx` — React Flow canvas (drag/drop nodes, inspector panel)
-  - `components/ui/` — shadcn/ui primitives (button, card, input, label, select, badge)
-- `nodes/` — flow node type definitions
-  - `nodes/registry.ts` — `NodeDefinition`/`NodeProperty` types and the node registry (`NODE_REGISTRY`, `NODE_REGISTRY_MAP`)
-  - `nodes/nodeTypes.tsx` — React Flow `nodeTypes` map (rendering per node type)
-  - `nodes/index.ts` — re-exports from this folder
-- `data/flowDefinitions.ts` — initial nodes/edges for the flow canvas (`INITIAL_NODES`, `INITIAL_EDGES`) and related types
-- `lib/utils.ts` — shared utilities (e.g. `cn`, `downloadJson`)
-- `public/` — static assets
+- `src/app/` — Next.js App Router pages
+  - `src/app/page.tsx` — home page
+  - `src/app/flow-editor/page.tsx` — flow editor page
+  - `src/app/layout.tsx`, `src/app/globals.css` — root layout and global styles
+- `src/components/` — shared React components
+  - `src/components/TopBar.tsx` — top navigation bar
+  - `src/components/flow/FlowCanvas.tsx` — React Flow canvas (drag/drop nodes, inspector panel)
+  - `src/components/ui/` — shadcn/ui primitives (button, card, input, label, select, badge)
+- `src/nodes/` — flow node type definitions
+  - `src/nodes/registry.ts` — `NodeDefinition`/`NodeProperty` types and the node registry (`NODE_REGISTRY`, `NODE_REGISTRY_MAP`)
+  - `src/nodes/nodeTypes.tsx` — React Flow `nodeTypes` map (rendering per node type)
+  - `src/nodes/index.ts` — re-exports from this folder
+- `src/data/flowDefinitions.ts` — initial nodes/edges for the flow canvas (`INITIAL_NODES`, `INITIAL_EDGES`) and related types
+- `src/lib/utils.ts` — shared utilities (e.g. `cn`, `downloadJson`)
+- `src/types/` — shared TypeScript types (e.g. `interfaces.ts`)
+- `public/` — static assets (stays at project root)
 - `components.json` — shadcn/ui configuration
