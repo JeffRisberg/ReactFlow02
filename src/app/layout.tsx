@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flow Studio",
+  title: "ReactFlow02",
   description: "A drag-and-drop editor for building flows.",
 };
 

@@ -15,7 +15,7 @@ export default function HomePage() {
           Design workflows visually
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          Flow Studio is a drag-and-drop editor for building flows.
+          This is a drag-and-drop editor for building flows.
         </p>
       </section>
 
